@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Search Filter</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <style>
+    html {
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background: white
+    }
+
+    .but1 {
+      background-color: Transparent;
+      border: none;
+    }
+
+    .login-box {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 400px;
+      padding: 40px;
+      transform: translate(-50%, -50%);
+      background: rgba(0, 0, 31, 0.863);
+      box-sizing: border-box;
+      box-shadow: 0 15px 25px rgba(0, 0, 0, .6);
+      border-radius: 10px;
+    }
+
+    .login-box h2 {
+      margin: 0 0 30px;
+      padding: 0;
+      color: #fff;
+      text-align: center;
+    }
+
+    .login-box .user-box {
+      position: relative;
+    }
+
+    .login-box .user-box input {
+      width: 100%;
+      padding: 10px 0;
+      font-size: 16px;
+      color: #fff;
+      margin-bottom: 30px;
+      border: none;
+      border-bottom: 1px solid #fff;
+      outline: none;
+      background: transparent;
+    }
+
+    .login-box .user-box label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      padding: 10px 0;
+      font-size: 16px;
+      color: #fff;
+      pointer-events: none;
+      transition: .5s;
+    }
+
+    .login-box .user-box input:focus~label,
+    .login-box .user-box input:valid~label {
+      top: -20px;
+      left: 0;
+      color: #03e9f4;
+      font-size: 12px;
+    }
+
+    .login-box form button {
+      position: relative;
+      display: inline-block;
+      padding: 10px 20px;
+      color: #03e9f4;
+      font-size: 16px;
+      text-decoration: none;
+      text-transform: uppercase;
+      overflow: hidden;
+      transition: .5s;
+      margin-top: 40px;
+      letter-spacing: 4px
+    }
+
+    .login-box button:hover {
+      background: #03e9f4;
+      color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 5px #03e9f4,
+        0 0 25px #03e9f4,
+        0 0 50px #03e9f4,
+        0 0 100px #03e9f4;
+    }
+
+    .login-box button span {
+      position: absolute;
+      display: block;
+    }
+
+    .login-box button span:nth-child(1) {
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #03e9f4);
+      animation: btn-anim1 1s linear infinite;
+    }
+
+    @keyframes btn-anim1 {
+      0% {
+        left: -100%;
+      }
+
+      50%,
+      100% {
+        left: 100%;
+      }
+    }
+
+    .login-box button span:nth-child(2) {
+      top: -100%;
+      right: 0;
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(180deg, transparent, #03e9f4);
+      animation: btn-anim2 1s linear infinite;
+      animation-delay: .25s
+    }
+
+    @keyframes btn-anim2 {
+      0% {
+        top: -100%;
+      }
+
+      50%,
+      100% {
+        top: 100%;
+      }
+    }
+
+    .login-box button span:nth-child(3) {
+      bottom: 0;
+      right: -100%;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(270deg, transparent, #03e9f4);
+      animation: btn-anim3 1s linear infinite;
+      animation-delay: .5s
+    }
+
+    @keyframes btn-anim3 {
+      0% {
+        right: -100%;
+      }
+
+      50%,
+      100% {
+        right: 100%;
+      }
+    }
+
+    .login-box button span:nth-child(4) {
+      bottom: -100%;
+      left: 0;
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(360deg, transparent, #03e9f4);
+      animation: btn-anim4 1s linear infinite;
+      animation-delay: .75s
+    }
+
+    @keyframes btn-anim4 {
+      0% {
+        bottom: -100%;
+      }
+
+      50%,
+      100% {
+        bottom: 100%;
+      }
+    }
+
+    .my-class {
+      height: 770px;
+    }
+
+    table {
+      width: 100%;
+      margin-bottom: 50px;
+      border-collapse: separate;
+      border-spacing: 0px;
+      box-shadow: 0px 0px 10px #ddd;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    thead {
+      background-color: rgba(0, 0, 31, 0.863);
+      color: #03e9f4;
+    }
+
+    th,
+    td {
+      padding: 12px;
+      text-align: left;
+    }
+
+    th {
+      font-weight: 600;
+    }
+
+    tbody tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+
+    tbody tr:hover {
+      background-color: #e0e0e0;
+    }
+
+    table {
+      font-size: 14px;
+    }
+
+    th,
+    td {
+      padding: 8px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login-box">
+    <h2>Search Filter</h2>
+    <form>
+      <div class="user-box">
+        <input type="text" id="department_id" name="department_id"><br>
+        <label for="department_id">Department ID:</label>
+      </div>
+
+      <div class="user-box">
+        <input type="text" id="instructor_id" name="instructor_id"><br>
+        <label for="instructor_id">Instructor ID:</label>
+      </div>
+
+      <div class="user-box">
+        <input type="text" id="course_id" name="course_id"><br>
+        <label for="course_id">Course ID:</label>
+      </div>
+
+      <div class="user-box">
+        <input type="text" id="course_name" name="course_name"><br>
+        <label for="course_name">Course Name:</label>
+      </div>
+
+      <div class="user-box">
+        <input type="text" id="student_id" name="student_id"><br>
+        <label for="student_id">Student ID:</label>
+      </div>
+
+      <div class="user-box">
+        <input type="text" id="student_name" name="student_name"><br>
+        <label for="student_name">Student Name:</label>
+      </div>
+
+      <div class="user-box">
+        <input type="number" id="Year" name="year"><br>
+        <label for="year">Year:</label>
+      </div>
+
+
+
+      <button class="but1" type="submit" id="search_button">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Search</button>
+
+
+    </form>
+  </div>
+  <div class="my-class">
+
+  </div>
+  <table id="result_table" style="display:none;">
+    <thead>
+      <tr>
+        <th>Student ID</th>
+        <th>Student Name</th>
+        <th>Year</th>
+        <th>Age</th>
+        <th>Address</th>
+        <th>Course ID</th>
+        <th>Course Name</th>
+        <th>Course Duration</th>
+        <th>Instructor ID</th>
+        <th>Instructor Name</th>
+        <th>Department ID</th>
+        <th>Department Name</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  </div>
+
+  <script>
+    $(function () {
+      $('form').submit(function (event) {
+        event.preventDefault();
+        var formData = $('form').serialize();
+        $.ajax({
+          type: 'GET',
+          url: '/search?' + formData,
+          success: function (result) {
+            $('#result_table tbody').empty();
+            $.each(result, function (index, row) {
+              var tr = $('<tr>');
+              tr.append('<td>' + row.student_id + '</td>');
+              tr.append('<td>' + row.student_name + '</td>');
+              tr.append('<td>' + row.year + '</td>');
+              tr.append('<td>' + row.age + '</td>');
+              tr.append('<td>' + row.address + '</td>');
+              tr.append('<td>' + row.course_id + '</td>');
+              tr.append('<td>' + row.course_name + '</td>');
+              tr.append('<td>' + row.course_duration + '</td>');
+              tr.append('<td>' + row.instructor_id + '</td>');
+              tr.append('<td>' + row.instructor_name + '</td>');
+              tr.append('<td>' + row.department_id + '</td>');
+              tr.append('<td>' + row.department_name + '</td>');
+              $('#result_table tbody').append(tr);
+            });
+            $('#result_table').show();
+          },
+          error: function () {
+            alert('An error occurred while processing your request.');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>
