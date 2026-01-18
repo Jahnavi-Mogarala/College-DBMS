@@ -1,0 +1,110 @@
+{
+    "name": "Departments",
+    "children": [
+        {
+            "name": "Computer Science",
+            "children": [
+                {
+                    "name": "Introduction to Computer Science",
+                    "duration": "6 months"
+                },
+                {
+                    "name": "Digital Logic Design",
+                    "duration": "6 months"
+                },
+                {
+                    "name": "Data Structures and Algorithms",
+                    "duration": "6 months"
+                },
+                {
+                    "name": "Computer Networks",
+                    "duration": "6 months"
+                },
+                {
+                    "name": "Database Systems",
+                    "duration": "6 months"
+                }
+            ]
+        },
+        {
+            "name": "Electrical Engineering",
+            "children": [
+                {
+                    "name": "Power Systems",
+                    "duration": "6 months"
+                },
+                {
+                    "name": "Electronics I",
+                    "duration": "6 months"
+                },
+                {
+                    "name": "Power Electronics",
+                    "duration": "6 months"
+                }
+            ]
+        },
+        {
+            "name": "Math",
+            "children": [
+                {
+                    "name": "Calculus I",
+                    "duration": "6 months"
+                },
+                {
+                    "name": "Calculus II",
+                    "duration": "6 months"
+                },
+                {
+                    "name": "Linear Algebra",
+                    "duration": "6 months"
+                },
+                {
+                    "name": "Multivariable Calculus",
+                    "duration": "6 months"
+                }
+            ]
+        },
+        {
+            "name": "English",
+            "children": [
+                {
+                    "name": "Introduction to Literature",
+                    "duration": "6 months"
+                },
+                {
+                    "name": "Shakespearean Literature",
+                    "duration": "6 months"
+                },
+                {
+                    "name": "Modern American Literature",
+                    "duration": "6 months"
+                },
+                {
+                    "name": "British Literature",
+                    "duration": "6 months"
+                }
+            ]
+        },
+        {
+            "name": "History",
+            "children": [
+                {
+                    "name": "US History I",
+                    "duration": "6 months"
+                },
+                {
+                    "name": "World History I",
+                    "duration": "6 months"
+                },
+                {
+                    "name": "US History II",
+                    "duration": "6 months"
+                },
+                {
+                    "name": "World History II",
+                    "duration": "6 months"
+                }
+            ]
+        }
+    ]
+}
